@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A simple class to generate Openbox Menu"
   s.authors     = ['Stefan Martin']
   s.email       = 'jerturo@gmail.com'
-  s.files       = ["lib/OpenboxMenu.rb"]
+  s.files       = ["lib/openboxmenu.rb"]
   s.homepage    = 'https://github.com/Ghardo/ruby-openbox-menu.git'
   s.license     = 'gpl'
 end
