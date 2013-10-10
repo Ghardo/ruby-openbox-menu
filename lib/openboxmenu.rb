@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'rubygems'
 require 'nokogiri'
 
@@ -28,6 +30,16 @@ class OpenboxMenu
 		execute = Nokogiri::XML::Node.new( "execute", @doc )
 		execute.content = command
 		action.add_child(execute)
+		
+		@items[itemid].add_child(action)
+	end
+	
+	def showmenu(itemid, menuid)
+		action = Nokogiri::XML::Node.new( "action", @doc )
+		action['name'] = 'ShowMenu'
+		menu = Nokogiri::XML::Node.new( "menu", @doc )
+		menu.content = menuid
+		action.add_child(menu)
 		
 		@items[itemid].add_child(action)
 	end
