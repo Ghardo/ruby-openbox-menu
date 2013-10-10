@@ -1,0 +1,5 @@
+git clone https://github.com/Ghardo/ruby-openbox-menu.git openboxmenu
+cd openboxmenu
+gem build OpenboxMenu.gemspec
+sudo gem install OpenboxMenu-0.0.1.gem 
+
