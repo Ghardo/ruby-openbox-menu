@@ -3,3 +3,18 @@ cd openboxmenu
 gem build OpenboxMenu.gemspec
 sudo gem install OpenboxMenu-0.0.1.gem 
 
+*Example*
+ #!/usr/bin/env ruby
+ require 'openboxmenu'
+ 
+ obm = OpenboxMenu.new
+ obm.menu('menu1', '_1 Menu 1')
+ obm.menu('menu2', '_2 Menu 2')
+ 
+ obm.item('menu1', "m1_menu1", "Menu 1 Item 1")
+ obm.item('menu2', "m2_menu1", "Menu 2 Item 1")
+ 
+ obm.execute("m1_menu1", '/bin/bash')
+ obm.execute("m2_menu1", '/bin/bash')
+ 
+ puts obm.getXml
