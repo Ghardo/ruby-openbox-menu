@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+$VERBOSE = nil
 
 require 'rubygems'
 require 'nokogiri'
@@ -12,20 +13,20 @@ class OpenboxMenu
 	end
 	
 	def menu(menuid, label)
-		@menu[menuid] = Nokogiri::XML::Node.new( "menu", @doc )
+		@menu[menuid] = self._create_node "menu"
 		@menu[menuid]['id'] = menuid
 		@menu[menuid]['label'] = label
 		@doc.root.add_child(@menu[menuid])
 	end
 	
 	def item(menuid, itemid, itemlabel)
-		@items[itemid] = Nokogiri::XML::Node.new( "item", @doc )
+		@items[itemid] = self._create_node "item"
 		@items[itemid]['label'] = itemlabel
 		@menu[menuid].add_child(@items[itemid])
 	end
 	
 	def separator(label, menuid = nil)
-		sep = Nokogiri::XML::Node.new( "separator", @doc )
+		sep = self._create_node "separator"
 		sep['label'] = label
 		
 		if menuid != nil
@@ -36,9 +37,9 @@ class OpenboxMenu
 	end
 	
 	def execute(itemid, command)
-		action = Nokogiri::XML::Node.new( "action", @doc )
+		action = self._create_node "action"
 		action['name'] = 'Execute'
-		execute = Nokogiri::XML::Node.new( "execute", @doc )
+		execute = self._create_node "execute"
 		execute.content = command
 		action.add_child(execute)
 		
@@ -46,9 +47,9 @@ class OpenboxMenu
 	end
 	
 	def showmenu(itemid, menuid)
-		action = Nokogiri::XML::Node.new( "action", @doc )
+		action = self._create_node "action"
 		action['name'] = 'ShowMenu'
-		menu = Nokogiri::XML::Node.new( "menu", @doc )
+		menu = self._create_node "menu"
 		menu.content = menuid
 		action.add_child(menu)
 		
@@ -57,5 +58,10 @@ class OpenboxMenu
 	
 	def getXml
 		return @doc.root.to_xml
+	end
+	
+	protected
+	def _create_node(name)
+		return Nokogiri::XML::Node.new(name, @doc)
 	end
 end
