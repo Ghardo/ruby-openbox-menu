@@ -24,6 +24,17 @@ class OpenboxMenu
 		@menu[menuid].add_child(@items[itemid])
 	end
 	
+	def separator(label, menuid = nil)
+		sep = Nokogiri::XML::Node.new( "separator", @doc )
+		sep['label'] = label
+		
+		if menuid != nil
+			@menu[menuid].add_child(sep)
+		else
+			@doc.root.add_child(sep)
+		end
+	end
+	
 	def execute(itemid, command)
 		action = Nokogiri::XML::Node.new( "action", @doc )
 		action['name'] = 'Execute'
