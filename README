@@ -6,7 +6,7 @@ sudo gem install OpenboxMenu-0.0.3.gem
 Requires nokogiri
 sudo gem install nokogiri
 
-Example
+# Example
 #!/usr/bin/env ruby
 require 'openboxmenu'
 
