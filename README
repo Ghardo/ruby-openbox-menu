@@ -1,7 +1,7 @@
 git clone https://github.com/Ghardo/ruby-openbox-menu.git openboxmenu
 cd openboxmenu
 gem build OpenboxMenu.gemspec
-sudo gem install OpenboxMenu-0.0.3.gem 
+sudo gem install OpenboxMenu-0.0.3.gem
 
 Requires nokogiri
 sudo gem install nokogiri
@@ -13,14 +13,14 @@ require 'openboxmenu'
 obm = OpenboxMenu.new
 obm.separator('Title Root')
 
-obm.menu('menu1', '_1 Menu 1')
-obm.menu('menu2', '_2 Menu 2')
+obm.menu('_1 Menu 1', 'menu1')
+obm.menu('_2 Menu 2', 'menu2')
 
 obm.menu('Title Menu 1', 'menu1')
 
-obm.item('menu1', "m1_menu1", "Menu 1 Item 1")
-obm.item('menu1', "m1_menu2", "Open Device Menu")
-obm.item('menu2', "m2_menu1", "Menu 2 Item 1")
+obm.item("m1_menu1", "Menu 1 Item 1", 'menu1')
+obm.item("m1_menu2", "Open Device Menu", 'menu1')
+obm.item("m2_menu1", "Menu 2 Item 1", 'menu2')
 
 obm.execute("m1_menu1", '/bin/bash')
 obm.showmenu("m1_menu2", 'devices')
