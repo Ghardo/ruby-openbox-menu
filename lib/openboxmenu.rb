@@ -12,11 +12,16 @@ class OpenboxMenu
 		@items = Hash.new
 	end
 
-	def menu(label, menuid)
+	def menu(label, menuid, rootmenuid = nil)
 		@menu[menuid] = self._create_node "menu"
 		@menu[menuid]['id'] = menuid
 		@menu[menuid]['label'] = label
-		@doc.root.add_child(@menu[menuid])
+
+		if rootmenuid != nil
+			@menu[rootmenuid].add_child(@menu[menuid])
+		else
+			@doc.root.add_child(@menu[menuid])
+		end
 	end
 
 	def item(itemid, itemlabel, menuid = nil)
@@ -24,7 +29,7 @@ class OpenboxMenu
 		@items[itemid]['label'] = itemlabel
 
 		if menuid == nil
-      @doc.root.add_child(@items[itemid])
+		  @doc.root.add_child(@items[itemid])
 		else
 		  @menu[menuid].add_child(@items[itemid])
 		end
