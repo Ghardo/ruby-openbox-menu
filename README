@@ -1,3 +1,7 @@
+this lib is outdated use https://github.com/Ghardo/openbox-pipemenu
+
+
+
 git clone https://github.com/Ghardo/ruby-openbox-menu.git openboxmenu
 cd openboxmenu
 gem build OpenboxMenu.gemspec
