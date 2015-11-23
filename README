@@ -1,4 +1,4 @@
-this lib is deprecated use https://github.com/Ghardo/openbox-pipemenu
+***this lib is deprecated use https://github.com/Ghardo/openbox-pipemenu***
 
 git clone https://github.com/Ghardo/ruby-openbox-menu.git openboxmenu
 cd openboxmenu
